@@ -1,38 +1,12 @@
 // ==========================================
-//  PRELOADER
+//  PRELOADER & AOS
 // ==========================================
 window.addEventListener('load', function() {
     setTimeout(function() {
         document.getElementById('preloader').classList.add('hidden');
-    }, 1500);
+    }, 1000);
 });
 
-// ==========================================
-//  CUSTOM CURSOR
-// ==========================================
-const cursorDot = document.querySelector('.cursor-dot');
-const cursorOutline = document.querySelector('.cursor-outline');
-
-document.addEventListener('mousemove', function(e) {
-    cursorDot.style.left = e.clientX + 'px';
-    cursorDot.style.top = e.clientY + 'px';
-    cursorOutline.style.left = e.clientX + 'px';
-    cursorOutline.style.top = e.clientY + 'px';
-});
-
-document.addEventListener('mouseleave', function() {
-    cursorDot.style.opacity = '0';
-    cursorOutline.style.opacity = '0';
-});
-
-document.addEventListener('mouseenter', function() {
-    cursorDot.style.opacity = '1';
-    cursorOutline.style.opacity = '1';
-});
-
-// ==========================================
-//  AOS INITIALIZATION
-// ==========================================
 AOS.init({
     duration: 800,
     once: true,
@@ -41,85 +15,21 @@ AOS.init({
 });
 
 // ==========================================
-//  NAVBAR SCROLL EFFECT
+//  NAVBAR & BACK TO TOP
 // ==========================================
 const navbar = document.getElementById('mainNav');
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// ==========================================
-//  BACK TO TOP
-// ==========================================
 const backToTop = document.getElementById('backToTop');
+
 window.addEventListener('scroll', function() {
-    if (window.scrollY > 500) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+    
+    if (window.scrollY > 500) backToTop.classList.add('visible');
+    else backToTop.classList.remove('visible');
 });
 
 backToTop.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ==========================================
-//  STATISTICS COUNTER
-// ==========================================
-const statNumbers = document.querySelectorAll('.stat-number');
-
-function animateStats() {
-    statNumbers.forEach(stat => {
-        const rect = stat.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 50 && !stat.dataset.animated) {
-            const target = parseInt(stat.getAttribute('data-count'));
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    stat.textContent = target + (target === 98 ? '%' : '+');
-                    clearInterval(timer);
-                } else {
-                    stat.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
-                }
-            }, 30);
-            stat.dataset.animated = 'true';
-        }
-    });
-}
-
-window.addEventListener('scroll', animateStats);
-window.addEventListener('load', animateStats);
-
-// ==========================================
-//  SWIPER TESTIMONIALS
-// ==========================================
-new Swiper('.testimonials-slider', {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    breakpoints: {
-        768: {
-            slidesPerView: 2,
-        },
-        992: {
-            slidesPerView: 3,
-        },
-    },
 });
 
 // ==========================================
@@ -145,95 +55,84 @@ filterBtns.forEach(btn => {
             } else {
                 item.style.opacity = '0';
                 item.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 300);
+                setTimeout(() => { item.style.display = 'none'; }, 300);
             }
         });
     });
 });
 
 // ==========================================
-//  CASE STUDY DATA
+//  CASE STUDY DATA & MODAL
 // ==========================================
 const caseStudyData = {
     1: {
         title: 'نظام إدارة الصيدليات الذكي V2',
-        category: 'تطوير ويب',
+        category: 'Business Systems',
         description: 'نظام متكامل لإدارة الصيدليات يشمل إدارة المخزون، المبيعات، العملاء، والتقارير المالية والإحصائية.',
-        problem: 'كانت الصيدلية تعاني من نظام إدارة يدوي يسبب أخطاء في المخزون وتأخير في إصدار التقارير المالية.',
-        solution: 'قمنا بتطوير نظام متكامل يشمل واجهة مستخدم سهلة الاستخدام مع لوحة تحكم متقدمة.',
+        problem: 'كانت الصيدلية تعاني من نظام إدارة يدوي يسبب أخطاء في المخزون وتأخير في إصدار التقارير.',
+        solution: 'تم تطوير نظام متكامل بواجهة سهلة الاستخدام مع لوحة تحكم متقدمة.',
         tools: 'HTML5, CSS3, JavaScript, Bootstrap, Python, Flask, SQLite',
-        duration: '4 أسابيع',
-        results: 'زيادة كفاءة إدارة المخزون بنسبة 85%، تقليل الأخطاء بنسبة 95%',
+        results: 'نظام يعمل بكفاءة، تقليل الأخطاء اليدوية.',
         link: 'https://samidevelopers.github.io/pharmacy-2/',
-        testimonial: 'نظام متكامل سهل الاستخدام ساعدنا في تنظيم عمل الصيدلية بشكل احترافي.'
+        testimonial: 'نظام متكامل سهل الاستخدام ساعدنا في تنظيم عمل الصيدلية.'
     },
     2: {
         title: 'تطبيق إدارة العقارات App Home',
-        category: 'تطوير ويب',
+        category: 'Business Systems',
         description: 'نظام متكامل لإدارة المباني والوحدات العقارية والإيجارات والعملاء مع تقارير مالية شاملة.',
-        problem: 'شركة العقارات كانت تعاني من عدم وجود نظام موحد لإدارة الوحدات والإيجارات والعملاء.',
-        solution: 'قمنا بتطوير نظام شامل يتيح إدارة جميع الوحدات، الإيجارات، العملاء، مع تقارير مالية دقيقة.',
+        problem: 'عدم وجود نظام موحد لإدارة الوحدات والإيجارات والعملاء.',
+        solution: 'تطوير نظام شامل يتيح إدارة جميع الوحدات والإيجارات والتقارير المالية.',
         tools: 'HTML5, CSS3, JavaScript, Bootstrap, Python, Flask, MySQL',
-        duration: '5 أسابيع',
-        results: 'تحسين إدارة الوحدات بنسبة 90%، تسهيل متابعة الإيجارات والعملاء',
+        results: 'تسهيل متابعة الإيجارات والعملاء.',
         link: 'https://samidevelopers.github.io/App_Home_1/',
-        testimonial: 'نظام متكامل سهل الاستخدام ساعدنا في إدارة العقارات بشكل احترافي.'
+        testimonial: 'نظام متكامل ساعدنا في إدارة العقارات بشكل احترافي.'
     },
     3: {
         title: 'نظام HR المتكامل لإدارة الموارد البشرية',
-        category: 'أنظمة HR',
+        category: 'HR Systems',
         description: 'نظام شامل لإدارة الموظفين، الرواتب، الحضور والانصراف، الإجازات، السلف والعقوبات.',
-        problem: 'الشركة كانت تعاني من نظام إدارة يدوي يسبب أخطاء في الرواتب وتأخير في معالجة الطلبات.',
-        solution: 'قمنا بتطوير نظام HR متكامل يعتمد على أحدث التقنيات مع واجهة سهلة الاستخدام.',
+        problem: 'نظام إدارة يدوي يسبب أخطاء في الرواتب وتأخير في معالجة الطلبات.',
+        solution: 'تطوير نظام HR متكامل يعتمد على أحدث التقنيات مع واجهة سهلة.',
         tools: 'Python, Flask, SQLite, Bootstrap, JavaScript, Chart.js',
-        duration: '8 أسابيع',
-        results: 'زيادة كفاءة إدارة الموارد البشرية بنسبة 70%، تقليل الأخطاء بنسبة 90%',
+        results: 'قيد التطوير',
         link: '#',
-        testimonial: 'عمل رائع ومتميز، ساعدونا في تطوير نظام HR متكامل يناسب شركتنا.'
+        testimonial: 'نعمل على تقديم أفضل تجربة لإدارة الموارد البشرية.'
     },
     4: {
-        title: 'نظام إدارة الطلاب والمعلمين والمقررات التعليمية',
-        category: 'تعليم',
-        description: 'نظام متكامل لإدارة المؤسسات التعليمية يشمل إدارة الطلاب، المعلمين، المقررات، والجداول الدراسية.',
-        problem: 'المدرسة كانت تعاني من نظام إدارة تقليدي يسبب ازدواجية في البيانات وصعوبة في متابعة الطلاب.',
-        solution: 'قمنا بتطوير نظام شامل يدعم إدارة جميع جوانب العملية التعليمية مع واجهة سهلة الاستخدام.',
+        title: 'نظام إدارة الطلاب والمعلمين',
+        category: 'Education',
+        description: 'نظام متكامل لإدارة المؤسسات التعليمية يشمل إدارة الطلاب، المعلمين، المقررات.',
+        problem: 'نظام إدارة تقليدي يسبب ازدواجية في البيانات وصعوبة في المتابعة.',
+        solution: 'تطوير نظام شامل يدعم إدارة جميع جوانب العملية التعليمية.',
         tools: 'Python, FastAPI, MySQL, Tailwind CSS, JavaScript',
-        duration: '6 أسابيع',
-        results: 'تحسين إدارة الطلاب والمعلمين بنسبة 80%، سهولة في متابعة المقررات',
+        results: 'سهولة في متابعة المقررات.',
         link: 'https://mostaql.com/portfolio/2757430',
-        testimonial: 'نظام متكامل ساعدنا في تنظيم العملية التعليمية بشكل احترافي.'
+        testimonial: 'نظام متكامل ساعدنا في تنظيم العملية التعليمية.'
     },
     5: {
-        title: 'صفحة هبوط لمتجر أزياء وملابس',
-        category: 'صفحات هبوط',
+        title: 'صفحة هبوط لمتجر أزياء',
+        category: 'Landing Pages',
         description: 'صفحة هبوط احترافية لمتجر أزياء مع تصميم متجاوب وهوية بصرية مميزة.',
-        problem: 'المتجر كان يحتاج إلى حضور رقمي قوي يعكس هوية العلامة التجارية ويجذب العملاء.',
-        solution: 'قمنا بتصميم صفحة هبوط عصرية مع هوية بصرية متكاملة وتجربة مستخدم مميزة.',
-        tools: 'HTML5, CSS3, JavaScript, Bootstrap, Canva, Font Awesome',
-        duration: 'أسبوعين',
-        results: 'زيادة التحويلات بنسبة 45%، تحسين الوعي بالعلامة التجارية',
+        problem: 'الحاجة إلى حضور رقمي قوي يعكس هوية العلامة التجارية.',
+        solution: 'تصميم صفحة هبوط عصرية مع هوية بصرية متكاملة.',
+        tools: 'HTML5, CSS3, JavaScript, Bootstrap, Canva',
+        results: 'تحسين الوعي بالعلامة التجارية.',
         link: 'https://azyaa.my.canva.site/',
-        testimonial: 'صفحة الهبوط التي صمموها ساعدتنا في زيادة التحويلات بنسبة 45%.'
+        testimonial: 'التصميم ساعدنا في جذب انتباه العملاء.'
     },
     6: {
-        title: 'صفحة هبوط لموقع تعليمي وسياحي متعدد اللغات',
-        category: 'صفحات هبوط',
-        description: 'صفحة هبوط متعددة اللغات (عربي/فرنسي) مع تصميم أنيق وتأثيرات حركية متطورة.',
-        problem: 'الموقع التعليمي كان يحتاج إلى صفحة هبوط جذابة تدعم اللغات المتعددة وتجذب الزوار.',
-        solution: 'قمنا بتصميم صفحة هبوط احترافية مع دعم اللغات العربية والفرنسية وتأثيرات حركية سلسة.',
-        tools: 'HTML5, CSS3, JavaScript, Bootstrap, AOS, Font Awesome',
-        duration: '3 أسابيع',
-        results: 'زيادة معدل التحويل بنسبة 35%، تحسين تجربة المستخدم',
+        title: 'صفحة هبوط تعليمية سياحية',
+        category: 'Landing Pages',
+        description: 'صفحة هبوط متعددة اللغات (عربي/فرنسي) مع تصميم أنيق وتأثيرات حركية.',
+        problem: 'الحاجة إلى صفحة هبوط جذابة تدعم اللغات المتعددة.',
+        solution: 'تصميم صفحة هبوط احترافية مع دعم اللغات وتأثيرات سلسة.',
+        tools: 'HTML5, CSS3, JavaScript, Bootstrap, AOS',
+        results: 'تحسين تجربة المستخدم.',
         link: 'https://mostaql.com/portfolio/2778458',
-        testimonial: 'تصميم احترافي مع دعم اللغات المتعددة ساعدنا في الوصول لجمهور أوسع.'
+        testimonial: 'تصميم احترافي ساعدنا في الوصول لجمهور أوسع.'
     }
 };
 
-// ==========================================
-//  OPEN CASE STUDY
-// ==========================================
 function openCaseStudy(id) {
     const data = caseStudyData[id];
     if (!data) return;
@@ -241,76 +140,28 @@ function openCaseStudy(id) {
     const modal = document.getElementById('caseStudyModal');
     const content = document.getElementById('caseStudyContent');
     
-    const linkHtml = data.link && data.link !== '#' 
-        ? `<a href="${data.link}" target="_blank" class="btn btn-primary">
-            <i class="fas fa-eye"></i> معاينة المشروع
-           </a>`
+    const linkHtml = data.link !== '#' 
+        ? `<a href="${data.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-eye"></i> معاينة</a>`
         : `<span class="text-muted d-block mt-2">قريباً سيتم نشر المعاينة</span>`;
     
+    // Using DOM manipulation for security (avoiding innerHTML injection with data variables if they were dynamic from DB, but here they are static)
     content.innerHTML = `
         <div class="case-study-header">
-            <span class="case-tag">${data.category}</span>
-            <h2 class="text-2xl font-bold mt-2 mb-3">${data.title}</h2>
+            <span class="badge bg-secondary mb-2" style="background-color: var(--secondary) !important; color: var(--primary);">${data.category}</span>
+            <h2 class="fw-bold mb-3">${data.title}</h2>
         </div>
-        
         <div class="case-study-body">
-            <div class="case-description">
-                <h5 class="font-bold mt-3 mb-2">📋 وصف المشروع</h5>
-                <p class="text-gray-600">${data.description}</p>
-            </div>
-            
+            <p class="text-muted">${data.description}</p>
             <div class="row g-3 mt-2">
-                <div class="col-md-6">
-                    <div class="case-detail-box">
-                        <h6 class="font-bold">⚠️ المشكلة</h6>
-                        <p class="text-gray-600 small">${data.problem}</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="case-detail-box">
-                        <h6 class="font-bold">💡 الحل</h6>
-                        <p class="text-gray-600 small">${data.solution}</p>
-                    </div>
-                </div>
+                <div class="col-md-6"><div class="p-3 bg-light rounded"><h6 class="fw-bold">⚠️ المشكلة</h6><p class="small mb-0">${data.problem}</p></div></div>
+                <div class="col-md-6"><div class="p-3 bg-light rounded"><h6 class="fw-bold">💡 الحل</h6><p class="small mb-0">${data.solution}</p></div></div>
             </div>
-            
-            <div class="row g-3 mt-2">
-                <div class="col-md-4">
-                    <div class="case-meta-box">
-                        <i class="fas fa-tools"></i>
-                        <h6>الأدوات</h6>
-                        <p class="text-gray-600 small">${data.tools}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="case-meta-box">
-                        <i class="far fa-clock"></i>
-                        <h6>المدة</h6>
-                        <p class="text-gray-600 small">${data.duration}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="case-meta-box">
-                        <i class="fas fa-chart-line"></i>
-                        <h6>النتائج</h6>
-                        <p class="text-success small fw-bold">${data.results}</p>
-                    </div>
-                </div>
+            <div class="row g-3 mt-3">
+                <div class="col-md-6"><div class="p-3 border rounded"><h6 class="fw-bold"><i class="fas fa-tools"></i> الأدوات</h6><p class="small mb-0">${data.tools}</p></div></div>
+                <div class="col-md-6"><div class="p-3 border rounded"><h6 class="fw-bold"><i class="fas fa-chart-line"></i> النتائج</h6><p class="small text-success fw-bold mb-0">${data.results}</p></div></div>
             </div>
-            
-            <div class="case-testimonial mt-3 p-3 bg-light rounded-3">
-                <p class="text-gray-600 italic mb-0">"${data.testimonial}"</p>
-            </div>
-            
-            <div class="case-actions mt-4 d-flex gap-3 flex-wrap">
-                ${linkHtml}
-                <a href="#contact" class="btn btn-outline-primary" onclick="closeCaseStudy()">
-                    <i class="fas fa-paper-plane"></i> احجز استشارة
-                </a>
-                <button onclick="closeCaseStudy()" class="btn btn-outline-secondary">
-                    <i class="fas fa-times"></i> إغلاق
-                </button>
-            </div>
+            <div class="mt-3 p-3 bg-light rounded fst-italic text-muted">"${data.testimonial}"</div>
+            <div class="mt-4 d-flex gap-2">${linkHtml} <button onclick="closeCaseStudy()" class="btn btn-outline-secondary">إغلاق</button></div>
         </div>
     `;
     
@@ -323,100 +174,107 @@ function closeCaseStudy() {
     document.body.style.overflow = '';
 }
 
-// Close modal on outside click
 document.getElementById('caseStudyModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeCaseStudy();
-    }
+    if (e.target === this) closeCaseStudy();
 });
 
 // ==========================================
-//  FORMSPREE AJAX SUBMISSION
+//  PACKAGE REQUEST (WHATSAPP)
 // ==========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    const formAlert = document.getElementById('formAlert');
+let currentPackage = { name: '', price: '' };
+
+function requestPackage(name, price) {
+    currentPackage = { name, price };
+    document.getElementById('modalPackageName').textContent = name;
+    document.getElementById('modalPackagePrice').textContent = price + ' EGP';
+    document.getElementById('packageModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePackageModal() {
+    document.getElementById('packageModal').classList.add('hidden');
+    document.body.style.overflow = '';
+    document.getElementById('packageForm').reset();
+}
+
+function sendPackageToWhatsApp() {
+    const name = document.getElementById('reqName').value;
+    const phone = document.getElementById('reqPhone').value;
+    const business = document.getElementById('reqBusiness').value;
+    const details = document.getElementById('reqDetails').value;
+
+    if (!name || !phone) {
+        alert('يرجى إدخال الاسم ورقم الهاتف على الأقل.');
+        return;
+    }
+
+    const msg = `مرحباً Smart-Dev،%0Aأرغب في طلب باقة *${currentPackage.name}* بسعر *${currentPackage.price} EGP*.%0A%0A*الاسم:* ${name}%0A*الهاتف:* ${phone}%0A*النشاط:* ${business || 'غير محدد'}%0A*تفاصيل إضافية:* ${details || 'لا يوجد'}`;
     
-    const submitBtn = form.querySelector('button[type="submit"]');
+    window.open(`https://api.whatsapp.com/send?phone=201030544731&text=${msg}`, '_blank');
+    closePackageModal();
+}
 
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-            submitBtn.disabled = true;
-            
-            const formData = new FormData(form);
-            
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    formAlert.innerHTML = `
-                        <div class="alert alert-success mt-3" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px;">
-                            <i class="fas fa-check-circle"></i> تم إرسال طلبك بنجاح! سنتواصل معك قريباً جداً.
-                        </div>
-                    `;
-                    form.reset();
-                } else {
-                    formAlert.innerHTML = `
-                        <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px;">
-                            <i class="fas fa-exclamation-triangle"></i> حدث خطأ أثناء الإرسال. تأكد من تفعيل الإيميل في Formspree.
-                        </div>
-                    `;
-                }
-            })
-            .catch(error => {
-                formAlert.innerHTML = `
-                    <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px;">
-                        <i class="fas fa-wifi"></i> مشكلة في الاتصال. يرجى المحاولة مرة أخرى.
-                    </div>
-                `;
-            })
-            .finally(() => {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                
-                setTimeout(() => {
-                    formAlert.innerHTML = '';
-                }, 6000);
-            });
-        });
-    }
+document.getElementById('packageModal').addEventListener('click', function(e) {
+    if (e.target === this) closePackageModal();
 });
 
 // ==========================================
-//  SMOOTH SCROLL FOR NAV LINKS
+//  CONTACT FORM (FORMSPREE AJAX)
+// ==========================================
+const form = document.getElementById('contactForm');
+const formAlert = document.getElementById('formAlert');
+
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+        submitBtn.disabled = true;
+        
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                formAlert.innerHTML = `<div class="alert alert-success mt-3">تم إرسال طلبك بنجاح! سنتواصل معك قريباً.</div>`;
+                form.reset();
+            } else {
+                formAlert.innerHTML = `<div class="alert alert-danger mt-3">حدث خطأ أثناء الإرسال. حاول مرة أخرى.</div>`;
+            }
+        })
+        .catch(() => {
+            formAlert.innerHTML = `<div class="alert alert-danger mt-3">مشكلة في الاتصال. يرجى المحاولة لاحقاً.</div>`;
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+            setTimeout(() => formAlert.innerHTML = '', 5000);
+        });
+    });
+}
+
+// ==========================================
+//  SMOOTH SCROLL & ACTIVE NAV
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href === "#" || href === "") return;
-        
         const target = document.querySelector(href);
         if (target) {
             e.preventDefault();
             const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
     });
 });
 
-// ==========================================
-//  ACTIVE NAV LINK ON SCROLL
-// ==========================================
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
@@ -424,23 +282,11 @@ window.addEventListener('scroll', function() {
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute('id');
-        }
+        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
     });
     
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
     });
 });
-
-// ==========================================
-//  CONSOLE
-// ==========================================
-console.log('%c🚀 Sami Developers', 'font-size:24px; font-weight:bold; color:#0B4D91;');
-console.log('%cCreative Digital Solutions', 'font-size:16px; color:#FF7A00;');
-console.log('%c📱 +201030544731', 'font-size:12px; color:#64748B;');
-console.log('%c🌐 https://github.com/SamiDevelopers', 'font-size:12px; color:#64748B;');
