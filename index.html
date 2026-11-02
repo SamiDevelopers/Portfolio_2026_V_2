@@ -888,35 +888,38 @@
                 <div class="col-lg-7" data-aos="fade-left">
                     <div class="contact-form-wrapper">
                         <h4>احجز استشارة مجانية</h4>
-                        <form id="contactForm">
+                        <!-- تم تحديث النموذج ليرتبط بـ Formspree -->
+                        <form id="contactForm" action="https://formspree.io/f/mgaapnqe" method="POST">
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="contactName" placeholder="الاسم الكامل" required>
+                                    <!-- إضافة خاصية name ضرورية جداً -->
+                                    <input type="text" class="form-control" id="contactName" name="الاسم" placeholder="الاسم الكامل" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" id="contactEmail" placeholder="البريد الإلكتروني" required>
+                                    <input type="email" class="form-control" id="contactEmail" name="البريد_الإلكتروني" placeholder="البريد الإلكتروني" required>
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control" id="contactPhone" placeholder="رقم الهاتف">
+                                    <input type="text" class="form-control" id="contactPhone" name="رقم_الهاتف" placeholder="رقم الهاتف">
                                 </div>
                                 <div class="col-12">
-                                    <select class="form-select" id="contactService">
+                                    <select class="form-select" id="contactService" name="الخدمة_المطلوبة">
                                         <option value="">اختر الخدمة</option>
-                                        <option value="web">تصميم وتطوير مواقع</option>
-                                        <option value="ecommerce">متاجر إلكترونية</option>
-                                        <option value="design">تصميم UI/UX</option>
-                                        <option value="branding">هوية بصرية</option>
-                                        <option value="social">إدارة السوشيال ميديا</option>
-                                        <option value="ai">حلول الذكاء الاصطناعي</option>
-                                        <option value="hr">أنظمة HR</option>
-                                        <option value="education">أنظمة تعليمية</option>
+                                        <option value="تصميم وتطوير مواقع">تصميم وتطوير مواقع</option>
+                                        <option value="متاجر إلكترونية">متاجر إلكترونية</option>
+                                        <option value="تصميم UI/UX">تصميم UI/UX</option>
+                                        <option value="هوية بصرية">هوية بصرية</option>
+                                        <option value="إدارة السوشيال ميديا">إدارة السوشيال ميديا</option>
+                                        <option value="حلول الذكاء الاصطناعي">حلول الذكاء الاصطناعي</option>
+                                        <option value="أنظمة HR">أنظمة HR</option>
+                                        <option value="أنظمة تعليمية">أنظمة تعليمية</option>
+                                        <option value="تحسين محركات البحث SEO">تحسين محركات البحث SEO</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" id="contactMessage" rows="4" placeholder="رسالتك..." required></textarea>
+                                    <textarea class="form-control" id="contactMessage" name="الرسالة" rows="4" placeholder="رسالتك..." required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary w-100">
+                                    <button type="submit" class="btn btn-primary w-100" id="submitBtn">
                                         <i class="fas fa-paper-plane"></i> إرسال الطلب
                                     </button>
                                 </div>
@@ -928,7 +931,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container">
