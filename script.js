@@ -356,6 +356,73 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     }, 5000);
 });
 
+
+// ==========================================
+//  FORMSPREE AJAX SUBMISSION (No Page Reload)
+// ==========================================
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const formAlert = document.getElementById('formAlert');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // منع إعادة تحميل الصفحة
+            
+            // تغيير حالة الزر لمنع الضغط المتكرر
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            submitBtn.disabled = true;
+            
+            // جمع بيانات النموذج
+            const formData = new FormData(form);
+            
+            // إرسال البيانات إلى Formspree في الخلفية
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // رسالة نجاح
+                    formAlert.innerHTML = `
+                        <div class="alert alert-success mt-3" style="background-color: #d4edda; color: #155724; border-color: #c3e6cb; padding: 15px; border-radius: 8px;">
+                            <i class="fas fa-check-circle"></i> تم إرسال طلبك بنجاح! سنتواصل معك قريباً جداً.
+                        </div>
+                    `;
+                    form.reset(); // تفريغ الحقول
+                } else {
+                    // رسالة خطأ
+                    formAlert.innerHTML = `
+                        <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; padding: 15px; border-radius: 8px;">
+                            <i class="fas fa-exclamation-triangle"></i> حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو التواصل عبر واتساب.
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                formAlert.innerHTML = `
+                    <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; padding: 15px; border-radius: 8px;">
+                        <i class="fas fa-wifi"></i> مشكلة في الاتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.
+                    </div>
+                `;
+            })
+            .finally(() => {
+                // إعادة الزر لحالته الطبيعية
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                
+                // إخفاء رسالة النجاح بعد 6 ثواني
+                setTimeout(() => {
+                    formAlert.innerHTML = '';
+                }, 6000);
+            });
+        });
+    }
+});
 // ==========================================
 //  SMOOTH SCROLL FOR NAV LINKS
 // ==========================================
