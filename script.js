@@ -331,28 +331,24 @@ document.getElementById('caseStudyModal').addEventListener('click', function(e) 
 });
 
 // ==========================================
-//  FORMSPREE AJAX SUBMISSION (النسخة النهائية النظيفة)
+//  FORMSPREE AJAX SUBMISSION
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     const formAlert = document.getElementById('formAlert');
     
-    // البحث عن الزر داخل النموذج لضمان عدم حدوث خطأ
     const submitBtn = form.querySelector('button[type="submit"]');
 
     if (form) {
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // منع إعادة تحميل الصفحة
+            e.preventDefault(); 
             
-            // تغيير حالة الزر
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
             submitBtn.disabled = true;
             
-            // جمع بيانات النموذج
             const formData = new FormData(form);
             
-            // إرسال البيانات إلى Formspree
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
