@@ -331,45 +331,20 @@ document.getElementById('caseStudyModal').addEventListener('click', function(e) 
 });
 
 // ==========================================
-//  CONTACT FORM
-// ==========================================
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('contactName').value.trim();
-    const email = document.getElementById('contactEmail').value.trim();
-    const phone = document.getElementById('contactPhone').value.trim();
-    const service = document.getElementById('contactService').value;
-    const message = document.getElementById('contactMessage').value.trim();
-    const alert = document.getElementById('formAlert');
-    
-    if (!name || !email || !message) {
-        alert.innerHTML = `<div class="alert alert-danger">❌ الرجاء ملء جميع الحقول المطلوبة</div>`;
-        return;
-    }
-    
-    alert.innerHTML = `<div class="alert alert-success">✅ شكراً ${name}! تم إرسال طلبك بنجاح. سنتواصل معك قريباً.</div>`;
-    this.reset();
-    
-    setTimeout(() => {
-        alert.innerHTML = '';
-    }, 5000);
-});
-
-
-// ==========================================
-//  FORMSPREE AJAX SUBMISSION (No Page Reload)
+//  FORMSPREE AJAX SUBMISSION (النسخة النهائية النظيفة)
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     const formAlert = document.getElementById('formAlert');
-    const submitBtn = document.getElementById('submitBtn');
+    
+    // البحث عن الزر داخل النموذج لضمان عدم حدوث خطأ
+    const submitBtn = form.querySelector('button[type="submit"]');
 
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault(); // منع إعادة تحميل الصفحة
             
-            // تغيير حالة الزر لمنع الضغط المتكرر
+            // تغيير حالة الزر
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
             submitBtn.disabled = true;
@@ -377,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // جمع بيانات النموذج
             const formData = new FormData(form);
             
-            // إرسال البيانات إلى Formspree في الخلفية
+            // إرسال البيانات إلى Formspree
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
@@ -387,35 +362,31 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    // رسالة نجاح
                     formAlert.innerHTML = `
-                        <div class="alert alert-success mt-3" style="background-color: #d4edda; color: #155724; border-color: #c3e6cb; padding: 15px; border-radius: 8px;">
+                        <div class="alert alert-success mt-3" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px;">
                             <i class="fas fa-check-circle"></i> تم إرسال طلبك بنجاح! سنتواصل معك قريباً جداً.
                         </div>
                     `;
-                    form.reset(); // تفريغ الحقول
+                    form.reset();
                 } else {
-                    // رسالة خطأ
                     formAlert.innerHTML = `
-                        <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; padding: 15px; border-radius: 8px;">
-                            <i class="fas fa-exclamation-triangle"></i> حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو التواصل عبر واتساب.
+                        <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px;">
+                            <i class="fas fa-exclamation-triangle"></i> حدث خطأ أثناء الإرسال. تأكد من تفعيل الإيميل في Formspree.
                         </div>
                     `;
                 }
             })
             .catch(error => {
                 formAlert.innerHTML = `
-                    <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; padding: 15px; border-radius: 8px;">
-                        <i class="fas fa-wifi"></i> مشكلة في الاتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.
+                    <div class="alert alert-danger mt-3" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px;">
+                        <i class="fas fa-wifi"></i> مشكلة في الاتصال. يرجى المحاولة مرة أخرى.
                     </div>
                 `;
             })
             .finally(() => {
-                // إعادة الزر لحالته الطبيعية
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
                 
-                // إخفاء رسالة النجاح بعد 6 ثواني
                 setTimeout(() => {
                     formAlert.innerHTML = '';
                 }, 6000);
@@ -423,6 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 // ==========================================
 //  SMOOTH SCROLL FOR NAV LINKS
 // ==========================================
@@ -474,5 +446,5 @@ window.addEventListener('scroll', function() {
 // ==========================================
 console.log('%c🚀 Sami Developers', 'font-size:24px; font-weight:bold; color:#0B4D91;');
 console.log('%cCreative Digital Solutions', 'font-size:16px; color:#FF7A00;');
-console.log('%c📱 +201552264714', 'font-size:12px; color:#64748B;');
+console.log('%c📱 +201030544731', 'font-size:12px; color:#64748B;');
 console.log('%c🌐 https://github.com/SamiDevelopers', 'font-size:12px; color:#64748B;');
