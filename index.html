@@ -445,13 +445,7 @@
             <!-- Tabs Navigation -->
             <ul class="nav nav-pills pricing-tabs justify-content-center mt-5 mb-4" id="pricingTabs" role="tablist" data-aos="fade-up">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="web-tab" data-bs-toggle="pill" data-bs-target="#web" type="button" role="tab">تطوير المواقع</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="ecommerce-tab" data-bs-toggle="pill" data-bs-target="#ecommerce" type="button" role="tab">المتاجر الإلكترونية</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="social-tab" data-bs-toggle="pill" data-bs-target="#social" type="button" role="tab">السوشيال ميديا</button>
+                    <button class="nav-link active" id="social-tab" data-bs-toggle="pill" data-bs-target="#social" type="button" role="tab">السوشيال ميديا</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="ads-tab" data-bs-toggle="pill" data-bs-target="#ads" type="button" role="tab">الإعلانات الممولة</button>
@@ -459,128 +453,19 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="brand-tab" data-bs-toggle="pill" data-bs-target="#brand" type="button" role="tab">الهوية التجارية</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="web-tab" data-bs-toggle="pill" data-bs-target="#web" type="button" role="tab">تطوير المواقع</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="ecommerce-tab" data-bs-toggle="pill" data-bs-target="#ecommerce" type="button" role="tab">المتاجر الإلكترونية</button>
+                </li>
             </ul>
 
             <!-- Tabs Content -->
             <div class="tab-content" id="pricingTabsContent" data-aos="fade-up">
-                <!-- 1. Web Development -->
-                <div class="tab-pane fade show active" id="web" role="tabpanel">
-                    <div class="row g-4 justify-content-center">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="package-card">
-                                <div class="package-header">
-                                    <h4>Start Website</h4>
-                                    <div class="package-price">12,000 <span>EGP</span></div>
-                                    <p>مرة واحدة</p>
-                                </div>
-                                <ul class="package-features">
-                                    <li><i class="fas fa-check"></i> حتى 5 صفحات</li>
-                                    <li><i class="fas fa-check"></i> تصميم Responsive</li>
-                                    <li><i class="fas fa-check"></i> ربط واتساب ونموذج تواصل</li>
-                                    <li><i class="fas fa-check"></i> SEO أساسي</li>
-                                    <li><i class="fas fa-check"></i> دعم فني 30 يوم</li>
-                                </ul>
-                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Start Website', '12,000')">اطلب هذه الباقة</button>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="package-card featured">
-                                <div class="package-badge">الأكثر طلباً</div>
-                                <div class="package-header">
-                                    <h4>Business Website</h4>
-                                    <div class="package-price">22,000 <span>EGP</span></div>
-                                    <p>مرة واحدة</p>
-                                </div>
-                                <ul class="package-features">
-                                    <li><i class="fas fa-check"></i> حتى 10 صفحات</li>
-                                    <li><i class="fas fa-check"></i> تصميم UI مخصص</li>
-                                    <li><i class="fas fa-check"></i> لوحة تحكم للمحتوى</li>
-                                    <li><i class="fas fa-check"></i> Google Analytics</li>
-                                    <li><i class="fas fa-check"></i> دعم فني 60 يوم</li>
-                                </ul>
-                                <button class="btn btn-primary w-100" onclick="requestPackage('Business Website', '22,000')">اطلب هذه الباقة</button>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="package-card">
-                                <div class="package-header">
-                                    <h4>Professional Website</h4>
-                                    <div class="package-price">38,000 <span>EGP</span></div>
-                                    <p>مرة واحدة</p>
-                                </div>
-                                <ul class="package-features">
-                                    <li><i class="fas fa-check"></i> حتى 15 صفحة</li>
-                                    <li><i class="fas fa-check"></i> تصميم UI/UX مخصص</li>
-                                    <li><i class="fas fa-check"></i> لوحة تحكم متقدمة</li>
-                                    <li><i class="fas fa-check"></i> SEO تقني متقدم</li>
-                                    <li><i class="fas fa-check"></i> دعم فني 90 يوم</li>
-                                </ul>
-                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Professional Website', '38,000')">اطلب هذه الباقة</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. E-Commerce -->
-                <div class="tab-pane fade" id="ecommerce" role="tabpanel">
-                    <div class="row g-4 justify-content-center">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="package-card">
-                                <div class="package-header">
-                                    <h4>Start Store</h4>
-                                    <div class="package-price">20,000 <span>EGP</span></div>
-                                    <p>مرة واحدة</p>
-                                </div>
-                                <ul class="package-features">
-                                    <li><i class="fas fa-check"></i> متجر متجاوب</li>
-                                    <li><i class="fas fa-check"></i> تجهيز حتى 30 منتج</li>
-                                    <li><i class="fas fa-check"></i> سلة مشتريات و Checkout</li>
-                                    <li><i class="fas fa-check"></i> طريقة دفع واحدة</li>
-                                    <li><i class="fas fa-check"></i> دعم فني 30 يوم</li>
-                                </ul>
-                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Start Store', '20,000')">اطلب هذه الباقة</button>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="package-card featured">
-                                <div class="package-badge">الأكثر طلباً</div>
-                                <div class="package-header">
-                                    <h4>Business Store</h4>
-                                    <div class="package-price">38,000 <span>EGP</span></div>
-                                    <p>مرة واحدة</p>
-                                </div>
-                                <ul class="package-features">
-                                    <li><i class="fas fa-check"></i> تجهيز حتى 100 منتج</li>
-                                    <li><i class="fas fa-check"></i> تصميم متجر مخصص</li>
-                                    <li><i class="fas fa-check"></i> إدارة المخزون والطلبات</li>
-                                    <li><i class="fas fa-check"></i> Google Analytics</li>
-                                    <li><i class="fas fa-check"></i> دعم فني 60 يوم</li>
-                                </ul>
-                                <button class="btn btn-primary w-100" onclick="requestPackage('Business Store', '38,000')">اطلب هذه الباقة</button>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="package-card">
-                                <div class="package-header">
-                                    <h4>Professional Store</h4>
-                                    <div class="package-price">65,000 <span>EGP</span></div>
-                                    <p>مرة واحدة</p>
-                                </div>
-                                <ul class="package-features">
-                                    <li><i class="fas fa-check"></i> تجهيز حتى 300 منتج</li>
-                                    <li><i class="fas fa-check"></i> تصميم UI/UX مخصص</li>
-                                    <li><i class="fas fa-check"></i> إدارة متقدمة للمخزون</li>
-                                    <li><i class="fas fa-check"></i> تكاملات دفع وشحن متعددة</li>
-                                    <li><i class="fas fa-check"></i> دعم فني 90 يوم</li>
-                                </ul>
-                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Professional Store', '65,000')">اطلب هذه الباقة</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Social Media -->
-                <div class="tab-pane fade" id="social" role="tabpanel">
+                
+                <!-- 1. Social Media -->
+                <div class="tab-pane fade show active" id="social" role="tabpanel">
                     <div class="row g-4 justify-content-center">
                         <div class="col-md-6 col-lg-4">
                             <div class="package-card">
@@ -637,7 +522,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Ads -->
+                <!-- 2. Ads -->
                 <div class="tab-pane fade" id="ads" role="tabpanel">
                     <div class="row g-4 justify-content-center">
                         <div class="col-md-6 col-lg-4">
@@ -695,7 +580,7 @@
                     </div>
                 </div>
 
-                <!-- 5. Brand Identity -->
+                <!-- 3. Brand Identity -->
                 <div class="tab-pane fade" id="brand" role="tabpanel">
                     <div class="row g-4 justify-content-center">
                         <div class="col-md-6 col-lg-4">
@@ -752,6 +637,122 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 4. Web Development -->
+                <div class="tab-pane fade" id="web" role="tabpanel">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="package-card">
+                                <div class="package-header">
+                                    <h4>Start Website</h4>
+                                    <div class="package-price">12,000 <span>EGP</span></div>
+                                    <p>مرة واحدة</p>
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="fas fa-check"></i> حتى 5 صفحات</li>
+                                    <li><i class="fas fa-check"></i> تصميم Responsive</li>
+                                    <li><i class="fas fa-check"></i> ربط واتساب ونموذج تواصل</li>
+                                    <li><i class="fas fa-check"></i> SEO أساسي</li>
+                                    <li><i class="fas fa-check"></i> دعم فني 30 يوم</li>
+                                </ul>
+                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Start Website', '12,000')">اطلب هذه الباقة</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="package-card featured">
+                                <div class="package-badge">الأكثر طلباً</div>
+                                <div class="package-header">
+                                    <h4>Business Website</h4>
+                                    <div class="package-price">22,000 <span>EGP</span></div>
+                                    <p>مرة واحدة</p>
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="fas fa-check"></i> حتى 10 صفحات</li>
+                                    <li><i class="fas fa-check"></i> تصميم UI مخصص</li>
+                                    <li><i class="fas fa-check"></i> لوحة تحكم للمحتوى</li>
+                                    <li><i class="fas fa-check"></i> Google Analytics</li>
+                                    <li><i class="fas fa-check"></i> دعم فني 60 يوم</li>
+                                </ul>
+                                <button class="btn btn-primary w-100" onclick="requestPackage('Business Website', '22,000')">اطلب هذه الباقة</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="package-card">
+                                <div class="package-header">
+                                    <h4>Professional Website</h4>
+                                    <div class="package-price">38,000 <span>EGP</span></div>
+                                    <p>مرة واحدة</p>
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="fas fa-check"></i> حتى 15 صفحة</li>
+                                    <li><i class="fas fa-check"></i> تصميم UI/UX مخصص</li>
+                                    <li><i class="fas fa-check"></i> لوحة تحكم متقدمة</li>
+                                    <li><i class="fas fa-check"></i> SEO تقني متقدم</li>
+                                    <li><i class="fas fa-check"></i> دعم فني 90 يوم</li>
+                                </ul>
+                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Professional Website', '38,000')">اطلب هذه الباقة</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. E-Commerce -->
+                <div class="tab-pane fade" id="ecommerce" role="tabpanel">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="package-card">
+                                <div class="package-header">
+                                    <h4>Start Store</h4>
+                                    <div class="package-price">20,000 <span>EGP</span></div>
+                                    <p>مرة واحدة</p>
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="fas fa-check"></i> متجر متجاوب</li>
+                                    <li><i class="fas fa-check"></i> تجهيز حتى 30 منتج</li>
+                                    <li><i class="fas fa-check"></i> سلة مشتريات و Checkout</li>
+                                    <li><i class="fas fa-check"></i> طريقة دفع واحدة</li>
+                                    <li><i class="fas fa-check"></i> دعم فني 30 يوم</li>
+                                </ul>
+                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Start Store', '20,000')">اطلب هذه الباقة</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="package-card featured">
+                                <div class="package-badge">الأكثر طلباً</div>
+                                <div class="package-header">
+                                    <h4>Business Store</h4>
+                                    <div class="package-price">38,000 <span>EGP</span></div>
+                                    <p>مرة واحدة</p>
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="fas fa-check"></i> تجهيز حتى 100 منتج</li>
+                                    <li><i class="fas fa-check"></i> تصميم متجر مخصص</li>
+                                    <li><i class="fas fa-check"></i> إدارة المخزون والطلبات</li>
+                                    <li><i class="fas fa-check"></i> Google Analytics</li>
+                                    <li><i class="fas fa-check"></i> دعم فني 60 يوم</li>
+                                </ul>
+                                <button class="btn btn-primary w-100" onclick="requestPackage('Business Store', '38,000')">اطلب هذه الباقة</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="package-card">
+                                <div class="package-header">
+                                    <h4>Professional Store</h4>
+                                    <div class="package-price">65,000 <span>EGP</span></div>
+                                    <p>مرة واحدة</p>
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="fas fa-check"></i> تجهيز حتى 300 منتج</li>
+                                    <li><i class="fas fa-check"></i> تصميم UI/UX مخصص</li>
+                                    <li><i class="fas fa-check"></i> إدارة متقدمة للمخزون</li>
+                                    <li><i class="fas fa-check"></i> تكاملات دفع وشحن متعددة</li>
+                                    <li><i class="fas fa-check"></i> دعم فني 90 يوم</li>
+                                </ul>
+                                <button class="btn btn-outline-primary w-100" onclick="requestPackage('Professional Store', '65,000')">اطلب هذه الباقة</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Pricing Policy -->
@@ -765,7 +766,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- ========== FAQ ========== -->
     <section class="section faq-section">
         <div class="container">
